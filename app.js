@@ -54,11 +54,11 @@ let currentItem = 0;
 // load initial item
 
 window.addEventListener('DOMContentLoaded', function() {
-  showPerson(currentItem);
+  showPerson();
 });
 
-function showPerson (person) {
-  const item = reviews[person];
+function showPerson () {
+  const item = reviews[currentItem];
   img.src = item.img;
   author.textContent = item.name;
   job.textContent = item.job;
@@ -72,7 +72,7 @@ nextBtn.addEventListener('click', function() {
   if (currentItem > reviews.length - 1) {
     currentItem = 0;
   }
-  showPerson(currentItem);
+  showPerson();
 })
 
 prevBtn.addEventListener('click', function () {
@@ -80,5 +80,16 @@ prevBtn.addEventListener('click', function () {
   if (currentItem < 0) {
     currentItem = reviews.length - 1;
   }
-  showPerson(currentItem);
+  showPerson();
 })
+
+randomBtn.addEventListener('click', function() {
+  currentItem = getRandomNumber();
+  showPerson();
+})
+
+function getRandomNumber() {
+  return Math.floor(Math.random() * 4); 
+}
+
+getRandomNumber();
